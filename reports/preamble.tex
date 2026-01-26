@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,caption,color,setspace,sectsty,comment,footmisc,pdflscape,subfigure,array,booktabs,tabularx,ragged2e,longtable,enumitem,xcolor,tikz,csquotes }
+\usepackage{float}
+
+% ====== In your preamble ======
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.misc,fit,calc}
+\tikzset{
+  box/.style={rectangle, rounded corners=3pt, draw, align=center, inner sep=6pt, font=\small},
+  step/.style={box, fill=gray!3},
+  branch/.style={box, fill=blue!3},
+  outcome/.style={box, fill=green!3},
+  note/.style={box, fill=yellow!10, font=\scriptsize},
+  >={Latex[length=2mm]},
+  line/.style={-Latex, thick},
+}
+
+
+\usepackage[backend=biber, style=apa, language=british]{biblatex}
+\addbibresource{ref.bib}
+
+%\usepackage[colorlinks=true,linkcolor=magenta, citecolor=blue, urlcolor=blue]{hyperref}
+
+\normalem
+\onehalfspacing
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{subhyp}{Hypothesis}[hyp]
+\renewcommand{\thesubhyp}{\thehyp\alph{subhyp}}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\arraybackslash\hspace{0pt}}m{#1}}
+
+\geometry{left=1.0in,right=1.0in,top=1.0in,bottom=1.0in}
+
+\usepackage[colorlinks=true, linkcolor=magenta, citecolor=blue, urlcolor=blue]{hyperref}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
