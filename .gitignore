@@ -1,4 +1,20 @@
-.Rproj.user
+# =========================
+# Do NOT upload data files
+# =========================
+data/
+data-processed/
+
+# =========================
+# Do NOT upload generated results
+# =========================
+outputs/
+
+# =========================
+# R / RStudio clutter
+# =========================
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+
+!data/.gitkeep
