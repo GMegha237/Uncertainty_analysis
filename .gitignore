@@ -1,4 +1,22 @@
-.Rproj.user
+# =========================
+# Do NOT upload data files
+# =========================
+data/raw/
+data/processed/
+data-processed/
+
+# =========================
+# Do NOT upload generated results
+# =========================
+outputs/
+
+# =========================
+# R / RStudio clutter
+# =========================
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+
+# (optional) keep this if you still want the empty data folder visible
+!data/.gitkeep
