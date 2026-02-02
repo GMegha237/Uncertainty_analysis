@@ -1,7 +1,8 @@
 # =========================
 # Do NOT upload data files
 # =========================
-data/
+data/raw/
+data/processed/
 data-processed/
 
 # =========================
@@ -17,4 +18,5 @@ outputs/
 .RData
 .Ruserdata
 
+# (optional) keep this if you still want the empty data folder visible
 !data/.gitkeep
