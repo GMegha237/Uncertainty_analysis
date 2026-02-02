@@ -20,3 +20,5 @@ outputs/
 
 # (optional) keep this if you still want the empty data folder visible
 !data/.gitkeep
+!data/raw/.gitkeep
+!data/processed/.gitkeep
