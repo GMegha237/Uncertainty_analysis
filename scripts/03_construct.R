@@ -49,9 +49,9 @@ winsorize_within <- function(x, sample_flag, p = 0.99) {
 # -----------------------------
 # Replace with your real column names from survey_clean
 perception_sets <- list(
-  # trust = c("P_trust_1", "P_trust_2", "P_trust_3"),
-  # clarity = c("P_clarity_1", "P_clarity_2"),
-  # credibility = c("P_cred_1", "P_cred_2", "P_cred_3")
+  trust_info = c("trust_info_sources","trust_info_gov","trust_info_np","trust_info_ff","trust_info_sm","trust_info_nm"),
+  thoughts_educ = c("thoughts_educ_1","thoughts_educ_2"),
+  tot_int = c("tot_int_1","tot_int_2")
 )
 
 # -----------------------------
