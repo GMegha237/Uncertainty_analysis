@@ -403,6 +403,14 @@ survey_clean <- survey_raw %>%
     low_reading_time_p25, very_low_reading_time_p10, zero_evidence_clicks,
     analysis_sample_main, analysis_sample_strict,
 
+    # baseline perceptions / covariates (carry through)
+    trust_disposition, trust_info_sources, trust_info_gov, trust_info_np, trust_info_ff,
+    trust_info_sm, trust_info_nm,
+    thoughts_educ_1, thoughts_educ_2, Ed_activity,
+    tot_int_1, tot_int_2,
+    sd_und, SC0,
+    Education, Age, Gender, `Statistical knowhow`, prof_backg,
+
     # engagement
     time_header_sec, time_evidence_sec, time_reading_sec, time_reading_min,
     header_clicks, evidence_clicks, reading_clicks, log_time_reading,
@@ -425,8 +433,8 @@ survey_clean <- survey_raw %>%
     first_shown, second_shown,
     high_effect_true, more_uncertain_true,
     uncertainty_applicable
-
   )
+
 # --- Section 10.1: paradata QC output ---
 
 timing_cols <- grep("(header_time|both_evid_time)_(First Click|Last Click|Page Submit|Click Count)$",
