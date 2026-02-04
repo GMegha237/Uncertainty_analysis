@@ -19,4 +19,3 @@ message("Imported rows: ", nrow(survey_raw))
 message("Imported columns: ", ncol(survey_raw))
 
 saveRDS(survey_raw, "data/processed/01_survey_raw.rds")
-vb
