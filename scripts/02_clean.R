@@ -319,6 +319,36 @@ survey_raw <- survey_raw %>%
     eff_same = as.integer(eff_comp_cat_opt == "same"),
     unc_same = as.integer(unc_comp_cat_opt == "same")
   )
+# --- Section 8.3: build FI/CT perception items + align to first/second ---
+
+items <- c("acc","unc","trust","clear","trans","info","dets")
+
+for (it in items) {
+
+  fi_cols <- grep(paste0("^C[1-5][ab]_FI_", it, "$"), names(survey_raw), value = TRUE)
+  ct_cols <- grep(paste0("^C[1-5][ab]_ct_", it, "$"), names(survey_raw), value = TRUE)
+
+  # Special case: dets has odd name "C4b_dets" in your raw list
+  if (it == "dets") {
+    ct_cols <- unique(c(ct_cols, grep("^C4b_dets$", names(survey_raw), value = TRUE)))
+  }
+
+  survey_raw[[paste0(it, "_fi")]] <- num(coalesce_cols(survey_raw, fi_cols))
+  survey_raw[[paste0(it, "_ct")]] <- num(coalesce_cols(survey_raw, ct_cols))
+
+  # align to what was shown first/second
+  survey_raw[[paste0(it, "_first")]] <- dplyr::case_when(
+    survey_raw$first_shown == "fi" ~ survey_raw[[paste0(it, "_fi")]],
+    survey_raw$first_shown == "ct" ~ survey_raw[[paste0(it, "_ct")]],
+    TRUE ~ NA_real_
+  )
+
+  survey_raw[[paste0(it, "_second")]] <- dplyr::case_when(
+    survey_raw$second_shown == "fi" ~ survey_raw[[paste0(it, "_fi")]],
+    survey_raw$second_shown == "ct" ~ survey_raw[[paste0(it, "_ct")]],
+    TRUE ~ NA_real_
+  )
+}
 
 
 # --- Section 9.0: completion and duplicate flags ---
@@ -411,6 +441,16 @@ survey_clean <- survey_raw %>%
     sd_und, SC0,
     Education, Age, Gender, `Statistical knowhow`, prof_backg,
 
+    # perceptions: option-specific + order-aligned
+    acc_fi, acc_ct, acc_first, acc_second,
+    unc_fi, unc_ct, unc_first, unc_second,
+    trust_fi, trust_ct, trust_first, trust_second,
+    clear_fi, clear_ct, clear_first, clear_second,
+    trans_fi, trans_ct, trans_first, trans_second,
+    info_fi, info_ct, info_first, info_second,
+    dets_fi, dets_ct, dets_first, dets_second,
+
+
     # engagement
     time_header_sec, time_evidence_sec, time_reading_sec, time_reading_min,
     header_clicks, evidence_clicks, reading_clicks, log_time_reading,
@@ -434,7 +474,6 @@ survey_clean <- survey_raw %>%
     high_effect_true, more_uncertain_true,
     uncertainty_applicable
   )
-
 # --- Section 10.1: paradata QC output ---
 
 timing_cols <- grep("(header_time|both_evid_time)_(First Click|Last Click|Page Submit|Click Count)$",
